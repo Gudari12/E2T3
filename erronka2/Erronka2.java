@@ -33,10 +33,13 @@ public class Erronka2 {
 			  
 			  System.out.println("Ongi Etorri. Mesedez, hasi saioa.");
 			  do{//loopa egiten du, saioa hasteko informazioa ona izan arte
-				  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
-				  Scanner scFitx = new Scanner (fErabiltzaileak);
+			//	  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+			//	  Scanner scFitx = new Scanner (fErabiltzaileak);
 				    
 				    do {
+				    	File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+						Scanner scFitx = new Scanner (fErabiltzaileak);
+				    	
 				    	System.out.print("Erabiltzailea: ");
 						usuario = scanner.next();
 				    	System.out.println();
@@ -50,7 +53,7 @@ public class Erronka2 {
 						    String erab = zutabeak[0];
 						    
 						    if (usuario.equals(erab)){
-						    	errorea = 5;
+						    	errorea = 4;
 						    	ondo = 1;
 						    	System.out.println("bai");
 						    }else if (errorea == 0){
@@ -58,17 +61,20 @@ public class Erronka2 {
 						    	System.out.println("ez");
 						    }
 					    }
-						 
-				    }while(errorea != 5 || ondo != 1);
+						scFitx.close();
+				    }while(ondo != 1);
 				    
+				    errorea = 0;
 				    
-				    
-				    while(errorea == 5){
+				    do{
+				    	File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+						Scanner scFitx = new Scanner (fErabiltzaileak);
+						
+						
 				    	System.out.print("Pasahitza: ");
 				    	contraseña = scanner.next();
 				    	System.out.println();
 				    	errorea++;
-				    
 				    
 					    while(scFitx.hasNext()){
 					    	
@@ -76,17 +82,18 @@ public class Erronka2 {
 						    String[] zutabeak = lerroOsoa.split(";"); 
 						    String pas = zutabeak[1];
 						    
-						    
-					    	if(contraseña.equals(pas)) {
-					    		errorea = 6;
-					    	}else {
-					    	errorea = 4;
-						    }   
+						    if(usuario.equals(zutabeak[0])) {
+						    	
+							    if(contraseña.equals(pas)) {
+						    		errorea = 6;
+							    }
+						  	}
 					    }
-				    }
+					    scFitx.close();
+				    }while(errorea<4);
 				    
 				    
-				    scFitx.close();
+				    
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
