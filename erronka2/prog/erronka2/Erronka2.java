@@ -37,11 +37,7 @@ public class Erronka2 {
 			//	  Scanner scFitx = new Scanner (fErabiltzaileak);
 				    
 				    do {
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
 				    	File fErabiltzaileak = new File("files/erabiltzaileak.txt");//Fitxategia irakurtzen du
-=======
-				    	File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 						Scanner scFitx = new Scanner (fErabiltzaileak);
 				    	
 				    	System.out.print("Erabiltzailea: ");
@@ -53,48 +49,23 @@ public class Erronka2 {
 						    String[] zutabeak = lerroOsoa.split(";");
 						    String erab = zutabeak[0];
 						    if (usuario.equals(erab)){
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
-=======
-						    	errorea = 4;
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 						    	ondo = 1;
 						    }
 					    }
 						scFitx.close();
 				    }while(ondo != 1);
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
 				    do{
 				    	File fErabiltzaileak = new File("files/erabiltzaileak.txt");//Fitxategia irakurtzen du
 						Scanner scFitx = new Scanner (fErabiltzaileak);
-=======
-				    
-				    errorea = 0;
-				    
-				    do{
-				    	File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
-						Scanner scFitx = new Scanner (fErabiltzaileak);
-						
-						
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 				    	System.out.print("Pasahitza: ");
 				    	contraseña = scanner.next();
 				    	System.out.println();
 				    	errorea++;
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
-=======
-				    
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 					    while(scFitx.hasNext()){
 							String lerroOsoa = scFitx.nextLine();
 						    String[] zutabeak = lerroOsoa.split(";"); 
 						    String pas = zutabeak[1];
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
 						    if(usuario.equals(zutabeak[0])) {
-=======
-						    
-						    if(usuario.equals(zutabeak[0])) {
-						    	
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 							    if(contraseña.equals(pas)) {
 						    		errorea = 6;
 							    }
@@ -102,12 +73,6 @@ public class Erronka2 {
 					    }
 					    scFitx.close();
 				    }while(errorea<4);
-<<<<<<< HEAD:erronka2/prog/erronka2/Erronka2.java
-=======
-				    
-				    
-				    
->>>>>>> e5b01f6809d4ba7652b1bcab1c2a8f658b575883:erronka2/Erronka2.java
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
