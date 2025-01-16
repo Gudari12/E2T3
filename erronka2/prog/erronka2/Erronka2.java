@@ -33,72 +33,56 @@ public class Erronka2 {
 			  
 			  System.out.println("Ongi Etorri. Mesedez, hasi saioa.");
 			  do{//loopa egiten du, saioa hasteko informazioa ona izan arte
-				  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
-				  Scanner scFitx = new Scanner (fErabiltzaileak);
+			//	  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+			//	  Scanner scFitx = new Scanner (fErabiltzaileak);
 				    
 				    do {
+				    	File fErabiltzaileak = new File("files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+						Scanner scFitx = new Scanner (fErabiltzaileak);
+				    	
 				    	System.out.print("Erabiltzailea: ");
 						usuario = scanner.next();
 				    	System.out.println();
 				    	
-				    	
-				    
 					    while(scFitx.hasNext()){
-					    	
 							String lerroOsoa = scFitx.nextLine();
 						    String[] zutabeak = lerroOsoa.split(";");
 						    String erab = zutabeak[0];
-						    
 						    if (usuario.equals(erab)){
-						    	errorea = 5;
 						    	ondo = 1;
-						    	System.out.println("bai");
-						    }else if (errorea == 0){
-						    	errorea = 5;
-						    	System.out.println("ez");
 						    }
 					    }
-						 
-				    }while(errorea != 5 || ondo != 1);
-				    
-				    
-				    
-				    while(errorea == 5){
+						scFitx.close();
+				    }while(ondo != 1);
+				    do{
+				    	File fErabiltzaileak = new File("files/erabiltzaileak.txt");//Fitxategia irakurtzen du
+						Scanner scFitx = new Scanner (fErabiltzaileak);
 				    	System.out.print("Pasahitza: ");
 				    	contraseña = scanner.next();
 				    	System.out.println();
 				    	errorea++;
-				    
-				    
 					    while(scFitx.hasNext()){
-					    	
 							String lerroOsoa = scFitx.nextLine();
 						    String[] zutabeak = lerroOsoa.split(";"); 
 						    String pas = zutabeak[1];
-						    
-						    
-					    	if(contraseña.equals(pas)) {
-					    		errorea = 6;
-					    	}else {
-					    	errorea = 4;
-						    }   
+						    if(usuario.equals(zutabeak[0])) {
+							    if(contraseña.equals(pas)) {
+						    		errorea = 6;
+							    }
+						  	}
 					    }
-				    }
-				    
-				    
-				    scFitx.close();
+					    scFitx.close();
+				    }while(errorea<4);
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
-				   
 			  }while(errorea != 6); 
 			  System.out.println("Ongi etorri!");
 			  System.out.println("");
-			  
 			  String errepikapena;
 			  int erantzuna;
 			  int irten=0;
-				
+			  
 			  do {//loopa egiten du saioa itxi arte
 					System.out.println("HASIERAKO MENUA");
 					System.out.println();
@@ -122,6 +106,8 @@ public class Erronka2 {
 				    	case 2:
 				    		System.out.println("XML sortu");
 				    		System.out.println("---------------------------------------");
+				    		IdatziXML xml = new IdatziXML();
+				    		xml.idatzi();
 				    		break;
 				    		
 				    	case 3:
@@ -139,11 +125,11 @@ public class Erronka2 {
 				    		while (eran != 0) {
 				    		System.out.println("Ziur irten nahi duzula? (Bai/Ez)");
 				    	   	errepikapena = scanner.next();
-				  	    	   	if (errepikapena.equals("Ez")) {//Hasierara bueltatzen da
+				  	    	   	if (errepikapena.equals("Ez")||errepikapena.equals("ez")) {//Hasierara bueltatzen da
 				  	    	   		System.out.print("");
 				  	    	   		break;
 				  	    	   	}
-				  	    	   	if (errepikapena.equals("Bai")) {
+				  	    	   	if (errepikapena.equals("Bai")||errepikapena.equals("bai")) {
 				  	    	   		System.out.println();
 				  	    	   		System.out.println("Hurrengora arte, eskerrik asko.");//Programa amaitzen da
 					                System.out.println("Programa irten...");
@@ -164,6 +150,7 @@ public class Erronka2 {
 		  }while (itxi != 1000);
 		  scanner.close();
 	  }
+	  
 	  public static void erabGehitu(Scanner scErab) throws IOException {
 		  String erab,pas,pas1,pas2,berria = new String();
 		  
@@ -174,7 +161,6 @@ public class Erronka2 {
 			  pas1 = scErab.next();
 			  System.out.print("Errepikatu pasahitza: ");
 			  pas2 = scErab.next();
-			  
 			  
 			  // Irakurri fitxategia.
 			  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");
@@ -199,8 +185,6 @@ public class Erronka2 {
 					  System.out.println();
 					  System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
 				}
-			  
-			  
 			  
 			  if(pas1.equals(pas2)) {
 				  pas=pas2;
