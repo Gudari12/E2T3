@@ -1,4 +1,5 @@
 package erronka2;
+import java.io.*;
 import java.io.File;
 //import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,7 +21,6 @@ import java.util.Scanner;
 //import java.io.File;
 
 public class Erronka2 {
-	
 	  public static void main(String[] args) throws IOException {
 
 		  int itxi=0;
@@ -108,11 +108,14 @@ public class Erronka2 {
 				    		System.out.println("---------------------------------------");
 				    		IdatziXML xml = new IdatziXML();
 				    		xml.idatzi();
+				    		
 				    		break;
 				    		
 				    	case 3:
 				    		System.out.println("datu basea eguneratu");
 				    		System.out.println("---------------------------------------");
+				    		gehituEremua();
+				    		// Credenciales de la base de datos Oracle
 				    		break;
 				    		
 				    	case 4:
@@ -151,6 +154,60 @@ public class Erronka2 {
 		  scanner.close();
 	  }
 	  
+	  private static void gehituEremua() {
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        // Mostrar el menú
+	        System.out.println("Selecciona una opción:");
+	        System.out.println("1. Eremua gehitu (Añadir campo)");
+	        System.out.println("2. Taula eguneratu (Actualizar tabla)");
+
+	        int choice = scanner.nextInt();
+
+	        // Procesar la opción seleccionada
+	        switch (choice) {
+	            case 1:
+	                gehituSoldata();
+	                break;
+	            case 2:
+	            	eguneratuSoldata();
+	                break;
+	            default:
+	                System.out.println("Opción no válida.");
+	        }
+	        scanner.close();
+	    }
+
+	    // Método para generar el script SQL para agregar un campo "soldata"
+	    private static void gehituSoldata() {
+	        String filePath = "agregar_campo_soldata.sql";
+	        String sqlScript = "ALTER TABLE Langileen\n" +
+	                           "ADD soldata NUMBER;\n";
+
+	        try (FileWriter writer = new FileWriter(filePath)) {
+	            writer.write(sqlScript);
+	            System.out.println("Scripta sortu da: " + filePath);
+	        } catch (IOException e) {
+	            System.out.println("Errorea egitean: " + e.getMessage());
+	        }
+	    }
+
+	    // Método para generar el script SQL para actualizar las sueldos según el puesto
+	    private static void eguneratuSoldata() {
+	        String filePath = "actualizar_soldata.sql";
+	        String sqlScript = "UPDATE Langileen SET soldata = 30000 WHERE puesto = 'Saltzaile';\n" +
+	                           "UPDATE Langileen SET soldata = 30000 WHERE id_puesto = 1;\n" +
+	                           "UPDATE Langileen SET soldata = 31000 WHERE id_puesto = 2;\n" +
+	                           "UPDATE Langileen SET soldata = 32000 WHERE id_puesto = 3;\n";
+
+	        try (FileWriter writer = new FileWriter(filePath)) {
+	            writer.write(sqlScript);
+	            System.out.println("Scripta sortu da: " + filePath);
+	        } catch (IOException e) {
+	            System.out.println("Errorea egitean: " + e.getMessage());
+	        }
+	    }
+	  
 	  public static void erabGehitu(Scanner scErab) throws IOException {
 		  String erab,pas,pas1,pas2,berria = new String();
 		  
@@ -163,7 +220,7 @@ public class Erronka2 {
 			  pas2 = scErab.next();
 			  
 			  // Irakurri fitxategia.
-			  File fErabiltzaileak = new File("src/erronka2/files/erabiltzaileak.txt");
+			  File fErabiltzaileak = new File("files/erabiltzaileak.txt");
 			  try {
 					Scanner scFitx = new Scanner(fErabiltzaileak);
 					// Edukiak dauden bitartean.
