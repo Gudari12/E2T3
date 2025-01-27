@@ -27,7 +27,7 @@ public class Erronka2 {
 		  Scanner scanner = new Scanner(System.in);
 		  do {
 			  
-			  String usuario, contraseña;
+			 /* String usuario, contraseña;
 			  int errorea=0;
 			  int ondo=0;
 			  
@@ -76,7 +76,7 @@ public class Erronka2 {
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
-			  }while(errorea != 6); 
+			  }while(errorea != 6); */
 			  System.out.println("Ongi etorri!");
 			  System.out.println("");
 			  String errepikapena;

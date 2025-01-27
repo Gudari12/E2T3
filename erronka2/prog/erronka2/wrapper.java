@@ -5,9 +5,9 @@ import java.util.Arrays;
 
 
 
-@XmlRootElement (name="langile")
+@XmlRootElement (name="langileak")
 public class wrapper {
-   @XmlElementWrapper (name="langileak")
+   //@XmlElementWrapper (name="langileak")
    @XmlElement(name = "langile")
    private XML [] langile;
    
