@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="langileak">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="langile"
+                            type="Tlangile"
+                            maxOccurs="unbounded">
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Tlangile">
+        <xs:sequence>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="apellido" type="xs:string"/>
+            <xs:element name="mail" type="xs:string"/>
+            <xs:element name="telefono" type="xs:string"/>
+            <xs:element name="fecha" type="xs:date"/>
+            <xs:element name="id_nagusi" type="xs:integer"/>
+            <xs:element name="lanpostu" type="xs:string"/>
+            <xs:element name="erabiltzaile" type="xs:string"/>
+            <xs:element name="pasahitza" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
