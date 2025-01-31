@@ -12,7 +12,6 @@ public class IdatziXML {
 
         File langileF = new File("files/csv/LANGILE_DATA_TABLE.csv");
         try (Scanner langileScanner = new Scanner(langileF)) {
-        	langileScanner.nextLine();
             while (langileScanner.hasNextLine()) {
                 String lerroOsoa = langileScanner.nextLine();
                 String[] lerroId = lerroOsoa.split(",", -1);
@@ -22,24 +21,17 @@ public class IdatziXML {
                     System.out.println("Línea inválida en el archivo LANGILE_DATA_TABLE.csv: " + lerroOsoa);
                     continue; // Saltar esta línea
                 }
-                
+
                 String id = lerroId[0];
                 String nombre = lerroId[1];
                 String apellido = lerroId[2];
                 String mail = lerroId[3];
                 String telefono = lerroId[4];
-                
-                String[] fechaT = lerroId[5].split("/");
-                String dia = fechaT [0];
-                String mes = fechaT [1];
-                String año = fechaT [2];
-                String fecha = (año+"-"+mes+"-"+dia);
-                
+                String fecha = lerroId[5];
                 String id_nagusi = lerroId[6];
                 String lanpostu = "";
                 String erabiltzaile="";
                 String pasahitza="";
-                
 
                 // Leer archivo LANPOSTU_DATA_TABLE.csv
                 File lanpostuaidF = new File("files/csv/BULEGARI_DATA_TABLE.csv");
