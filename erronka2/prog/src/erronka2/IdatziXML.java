@@ -16,7 +16,7 @@ public class IdatziXML {
         	langileScanner.nextLine();
             while (langileScanner.hasNextLine()) {
                 String lerroOsoa = langileScanner.nextLine();
-                String[] lerroId = lerroOsoa.split(",", -1);
+                String[] lerroId = lerroOsoa.split(";", -1);
 
                 // Verificar que la línea tenga al menos 7 elementos
                 if (lerroId.length < 7) {
@@ -49,7 +49,7 @@ public class IdatziXML {
                 try (Scanner lanpostuaScanner = new Scanner(lanpostuaidF)) {
                     while (lanpostuaScanner.hasNextLine()) {
                         String lerroOsoa2 = lanpostuaScanner.nextLine();
-                        String[] lerroId2 = lerroOsoa2.split(",");
+                        String[] lerroId2 = lerroOsoa2.split(";");
                         
                         if (lerroId2.length < 2) {
                             System.out.println("Línea inválida en el archivo LANPOSTU_DATA_TABLE.csv: " + lerroOsoa2);
@@ -62,7 +62,7 @@ public class IdatziXML {
                             try(Scanner lanpostuaScanner2 = new Scanner(lanpostuaF)){
                             	while (lanpostuaScanner2.hasNextLine()) {
                             	String lerroOsoa3 = lanpostuaScanner2.nextLine();
-                                String[] lerroId3 = lerroOsoa3.split(",");
+                                String[] lerroId3 = lerroOsoa3.split(";");
                                 if (lanpostuid.equals(lerroId3[0])) {
                                 	lanpostu=lerroId3[1];
                                 	}
@@ -74,7 +74,7 @@ public class IdatziXML {
                     try (Scanner saltzaileScanner3 = new Scanner(egiaztagiriF)){
                     	 while (saltzaileScanner3.hasNextLine()) {
                              String lerroOsoa4 = saltzaileScanner3.nextLine();
-                             String[] lerroId4 = lerroOsoa4.split(",");
+                             String[] lerroId4 = lerroOsoa4.split(";");
                              if(id.equals(lerroId4[0])) {
                             	 erabiltzaile=lerroId4[1];
                             	 pasahitza=lerroId4[2];

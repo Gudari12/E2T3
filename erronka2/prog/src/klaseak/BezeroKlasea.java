@@ -1,4 +1,4 @@
-package erronka2;
+package klaseak;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,11 +42,11 @@ public class BezeroKlasea {
 				this.abizena = lerroArray[2];
 				this.helbidea = lerroArray[3];
 				this.emaila = lerroArray[4];
-				/*System.out.println("\nID: "+lerroArray[0]);
+				System.out.println("\nID: "+lerroArray[0]);
 				System.out.println("\nIzena: "+lerroArray[1]);
 				System.out.println("\nAbizena: "+lerroArray[2]);
 				System.out.println("\nHelbidea: "+lerroArray[3]);
-				System.out.println("\nEmaila: "+lerroArray[4]);*/
+				System.out.println("\nEmaila: "+lerroArray[4]);
 				
 				//BezeroKlasea bezeroa = new BezeroKlasea();
 				//bezeroa = lerro;

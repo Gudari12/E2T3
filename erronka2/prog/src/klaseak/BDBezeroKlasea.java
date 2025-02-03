@@ -1,4 +1,4 @@
-package erronka2;
+package klaseak;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,12 +59,12 @@ public class BDBezeroKlasea extends BezeroKlasea {
 	
 
 	public String toString() {
-		String taul1 = null;
+		String taula = null;
 		try {
 			File bezero = new File("fitxategiak/bezero.csv");
 			Scanner scFitx = new Scanner(bezero);
 			scFitx.nextLine();
-			//String taula = null;
+			//String taula;
 			while(scFitx.hasNext()) {
 				String lerro = scFitx.nextLine();
 				String[] lerroArray = lerro.split(";");
@@ -75,7 +75,7 @@ public class BDBezeroKlasea extends BezeroKlasea {
 				System.out.println("\nHelbidea: "+lerroArray[3]);
 				System.out.println("\nEmaila: "+lerroArray[4]);
 				
-				taul1 = "\n"+"\nID: "+lerroArray[0]+"\nIzena: "+lerroArray[1]+"\nAbizena: "+lerroArray[2]+"\nHelbidea: "+lerroArray[3]+"\nEmaila: "+lerroArray[4];
+				taula = "\n"+"\nID: "+lerroArray[0]+"\nIzena: "+lerroArray[1]+"\nAbizena: "+lerroArray[2]+"\nHelbidea: "+lerroArray[3]+"\nEmaila: "+lerroArray[4];
 				
 				//scFitx.close();
 				
@@ -83,17 +83,11 @@ public class BDBezeroKlasea extends BezeroKlasea {
 			}
 			scFitx.close();
 			
-			//return taula;
 						
 		}catch(FileNotFoundException e) {
 			System.out.println("Ez da fitxategia topatu\n");
 		}
-		return taul1;
-	}
-	
-	public static String taula(String taul1) {
-		String taul = taul1;
-		return taul;
+		return taula;
 	}
 
 }

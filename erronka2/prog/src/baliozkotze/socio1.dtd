@@ -1,0 +1,14 @@
+<!ELEMENT langileak (langile+)>
+<!ELEMENT langile (id, nombre, apellido,mail,telefono,fecha,id_nagusi,lanpostu,erabiltzaile,pasahitza)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido (#PCDATA)>
+<!ELEMENT mail (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
+<!ELEMENT id_nagusi (#PCDATA)>
+<!ELEMENT lanpostu (#PCDATA)>
+<!ELEMENT erabiltzaile (#PCDATA)>
+<!ELEMENT pasahitza (#PCDATA)>
+
+<!--<!DOCTYPE langileak SYSTEM "../baliozkotze/socio1.dtd" >-->
