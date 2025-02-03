@@ -104,10 +104,10 @@ public class Erronka2 {
 				    		break;
 				    		
 				    	case 2:
-				    		System.out.println("XML sortu");
-				    		System.out.println("---------------------------------------");
+				    		System.out.println("XML sortu... \n");
 				    		IdatziXML xml = new IdatziXML();
 				    		xml.idatzi();
+				    		System.out.println("---------------------------------------");
 				    		
 				    		break;
 				    		

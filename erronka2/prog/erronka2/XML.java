@@ -3,7 +3,7 @@ package erronka2;
 import jakarta.xml.bind.annotation.*;
 
 //sortu klasea
-@XmlRootElement (name="langile") 
+@XmlRootElement (name="langileak") 
 @XmlType (propOrder = {"id", "nombre", "apellido","mail","telefono","fecha","id_nagusi","lanpostu","erabiltzaile","pasahitza"})
 @XmlAccessorType (XmlAccessType.FIELD)
 public class XML {
