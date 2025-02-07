@@ -3,11 +3,11 @@ package erronka2;
 import jakarta.xml.bind.annotation.*;
 
 //sortu klasea
-@XmlRootElement (name="saltzaile") 
-@XmlType (propOrder = {"id", "nombre", "apellido","mail","telefono","fecha","id_nagusi","erabiltzaile","pasahitza"})
+@XmlRootElement (name="bulegari") 
+@XmlType (propOrder = {"id", "nombre", "apellido","mail","telefono","fecha","id_nagusi","lanpostu"})
 @XmlAccessorType (XmlAccessType.FIELD)
-public class XML {
-	@XmlAttribute (required=true)
+public class XMLAN {
+	@XmlElement (name="id")
 	private String id;
 	@XmlElement (name="nombre") 
 	private String nombre;
@@ -21,15 +21,12 @@ public class XML {
 	private String fecha;
 	@XmlElement (name="id_nagusi")
 	private String id_nagusi;
-	@XmlElement (name="erabiltzaile")
-	private String erabiltzaile;
-	@XmlElement (name="pasahitza")
-	private String pasahitza;
+	@XmlElement (name="lanpostu")
+	private String lanpostu;
 	
 	
-	public XML() {}
-	public XML(String id, String nombre, String apellido, String mail, String telefono, String fecha,
-			String id_nagusi, String erabiltzaile, String pasahitza) {
+	public XMLAN() {}
+	public XMLAN(String id, String nombre, String apellido, String mail, String telefono, String fecha, String id_nagusi, String lanpostu) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -38,16 +35,15 @@ public class XML {
 		this.telefono = telefono;
 		this.fecha = fecha;
 		this.id_nagusi = id_nagusi;
-		this.erabiltzaile=erabiltzaile;
-		this.pasahitza=pasahitza;
+		this.lanpostu= lanpostu;
 	}
 
 
 @Override
 public String toString() {
 	return "XML [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", telefono="
-			+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", erabiltzaile="
-			+ erabiltzaile + ", pasahitza=" + pasahitza + "]";
+			+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", lanpostu="
+			+ lanpostu+"]";
 }
 
 
