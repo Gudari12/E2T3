@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Azken berriak</title>
+        <link></link>
+        <description>GameStop web orriaren azken berriak hemen aurkitu dezakezu</description>
+        <language>eu</language>
+        <lastBuildDate>Tue, 04 Feb 2025 13:30:00 +0100</lastBuildDate>
+
+        <!-- Berrien atala -->
+        <category>News</category>
+        <item>
+            <title></title>
+            <link></link>
+            <pubDate>Tue, 04 Feb 2025 13:30:00 +0100</pubDate>
+            <description></description>
+        </item>
+        <item>
+            <title></title>
+            <link></link>
+            <pubDate>Tue, 04 Feb 2025 13:30:00 +0100</pubDate>
+            <description></description>
+        </item>
+        <item>
+            <title></title>
+            <link></link>
+            <pubDate>Tue, 04 Feb 2025 13:30:00 +0100</pubDate>
+            <description></description>
+        </item>
+        <item>
+            <title></title>
+            <link></link>
+            <pubDate>Tue, 04 Feb 2025 13:30:00 +0100</pubDate>
+            <description></description>
+        </item>
+
+    </channel>
+</rss>
