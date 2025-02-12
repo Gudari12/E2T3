@@ -26,7 +26,6 @@ public class XML {
 	@XmlElement (name="pasahitza")
 	private String pasahitza;
 	
-	
 	public XML() {}
 	public XML(String id, String nombre, String apellido, String mail, String telefono, String fecha,
 			String id_nagusi, String erabiltzaile, String pasahitza) {
@@ -42,13 +41,10 @@ public class XML {
 		this.pasahitza=pasahitza;
 	}
 
-
-@Override
-public String toString() {
-	return "XML [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", telefono="
-			+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", erabiltzaile="
-			+ erabiltzaile + ", pasahitza=" + pasahitza + "]";
-}
-
-
+	@Override
+	public String toString() {
+		return "XML [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", telefono="
+				+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", erabiltzaile="
+				+ erabiltzaile + ", pasahitza=" + pasahitza + "]";
+	}
 }

@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.*;
 @XmlType (propOrder = {"id", "nombre", "apellido","mail","telefono","fecha","id_nagusi","lanpostu"})
 @XmlAccessorType (XmlAccessType.FIELD)
 public class XMLAN {
-	@XmlElement (name="id")
+	@XmlAttribute (required=true)
 	private String id;
 	@XmlElement (name="nombre") 
 	private String nombre;
@@ -24,7 +24,6 @@ public class XMLAN {
 	@XmlElement (name="lanpostu")
 	private String lanpostu;
 	
-	
 	public XMLAN() {}
 	public XMLAN(String id, String nombre, String apellido, String mail, String telefono, String fecha, String id_nagusi, String lanpostu) {
 		super();
@@ -38,13 +37,10 @@ public class XMLAN {
 		this.lanpostu= lanpostu;
 	}
 
-
-@Override
-public String toString() {
-	return "XML [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", telefono="
-			+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", lanpostu="
-			+ lanpostu+"]";
-}
-
-
+	@Override
+	public String toString() {
+		return "XML [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", telefono="
+				+ telefono + ", fecha=" + fecha + ", id_nagusi=" + id_nagusi + ", lanpostu="
+				+ lanpostu+"]";
+	}
 }

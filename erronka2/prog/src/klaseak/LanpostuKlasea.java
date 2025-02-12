@@ -1,4 +1,4 @@
-package erronka2;
+package klaseak;
 
 public class LanpostuKlasea {
 	

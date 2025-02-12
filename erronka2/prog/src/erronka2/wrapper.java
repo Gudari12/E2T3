@@ -14,7 +14,7 @@ public class wrapper {
    public wrapper (){
 	      this.bulegari = new XML [0];
 	      this.saltzaile = new XMLAN [0];
-	   }
+   }
    public void addSocio (XML s){
       this.bulegari=Arrays.copyOf(this.bulegari,this.bulegari.length+1);
       this.bulegari[this.bulegari.length-1]=s;
@@ -26,9 +26,5 @@ public class wrapper {
    public void addSocio2 (XMLAN b){
       this.saltzaile=Arrays.copyOf(this.saltzaile,this.saltzaile.length+1);
       this.saltzaile[this.saltzaile.length-1]=b;
-   }
-   
+   }  
 }
-
-	
-	
