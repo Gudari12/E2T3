@@ -48,7 +48,7 @@ public class Erronka2 {
 		  Scanner scanner = new Scanner(System.in);
 		  do {
 			  
-			  String usuario, contraseña;
+			  /*String usuario, contraseña;
 			  int errorea=0;
 			  int ondo=0;
 			  
@@ -95,7 +95,7 @@ public class Erronka2 {
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
-			  }while(errorea != 6);
+			  }while(errorea != 6);*/
 			  System.out.println("Ongi etorri!");
 			  System.out.println("");
 			  String errepikapena;
@@ -117,14 +117,14 @@ public class Erronka2 {
 				    
 				    switch (erantzuna) {//Menuaren interakzioa
 				    	case 1:
-				    		System.out.println("Erabiltzailea gehitu... \n");
+				    		System.out.println("Erabiltzailea gehitu aukeratu duzu \n");
 				    		erabGehitu(scanner);
 				    		System.out.println();
 				    		System.out.println("---------------------------------------");
 				    		break;
 				    		
 				    	case 2:
-				    		System.out.println("XML sortu... \n");
+				    		System.out.println("XML sortzen... \n");
 				    		IdatziXML xml = new IdatziXML();
 				    		xml.idatzi();
 				    		System.out.println("---------------------------------------");
@@ -132,14 +132,14 @@ public class Erronka2 {
 				    		break;
 				    		
 				    	case 3:
-				    		System.out.println("Datu basea eguneratu... \n");
+				    		System.out.println("Datu basea eguneratu aukeratu duzu \n");
 				    		System.out.println("---------------------------------------");
 				    		gehituEremua(scanner);
 				    		// Credenciales de la base de datos Oracle
 				    		break;
 				    		
 				    	case 4:
-				    		System.out.println("Datuak erakusten... \n");
+				    		System.out.println("Datuak erakutsi aukeratu duzu \n");
 				    		datuakErakutsi(scanner);
 				    		System.out.println("---------------------------------------");
 				    		break;
@@ -174,6 +174,79 @@ public class Erronka2 {
 		  }while (itxi != 1000);
 		  scanner.close();
 	  }
+	  
+	  public static void erabGehitu(Scanner scErab) throws IOException {
+	        // Aldagaiak deklaratu
+	        String erab, pas, pas1, pas2 = "", berria = new String();
+	        
+	        try {
+	            // Erabiltzaile izena eskatu
+	            System.out.print("Sortu erabiltzaile berria: ");
+	            erab = scErab.next();
+	            
+	            
+	            // Fitxategia irakurri
+	            File fErabiltzaileak = new File("files/erabiltzaileak.txt");
+	            try {
+	                Scanner scFitx = new Scanner(fErabiltzaileak);
+	                
+	                // Fitxategiko lerroak irakurri
+	                while (scFitx.hasNext()) {
+	                    String lerroOsoa = scFitx.nextLine();
+	                    String[] lerroParteak = lerroOsoa.split(";");
+	                    String erabF = lerroParteak[0];
+	                    
+	                    // Erabiltzailea existitzen den egiaztatu
+	                    if(erabF.equals(erab)) {
+	                        System.out.println();
+	                        System.out.println("Erabiltzailea existitzen da, ezin izan da erabiltzailea gehitu.\nHasierarako menura bueltatzen...");
+	                        //erab = ""; // Erabiltzailea ezabatu
+	                        pas1 = ""; // Pasahitza ezabatu
+	                        pas2 = "."; // Errepikatutako pasahitza ezabatu
+	                    }
+	                }
+	                if (pas2.equals("")){
+                    	// Pasahitza eskatu
+        	            System.out.print("Sortu pasahitza: ");
+        	            pas1 = scErab.next();
+        	            
+        	            // Pasahitza errepikatu
+        	            System.out.print("Errepikatu pasahitza: ");
+        	            pas2 = scErab.next();
+        	            
+        	            // Pasahitzak berdinak diren egiaztatu
+        	            if(pas1.equals(pas2)) {
+        	                pas = pas2;
+        	                berria = erab + ";" + pas;
+        	                
+        	                // Fitxategira erabiltzaile berria gehitu
+        	                Path path = Paths.get(fErabiltzaileak.toURI());
+        	                byte[] strToBytes = (System.lineSeparator() + berria).getBytes();
+        	                
+        	                Files.write(path, strToBytes, StandardOpenOption.APPEND);
+        	                System.out.println();
+        	                System.out.println("Erabiltzaile gehituta.");
+        	            } else {
+        	                if(pas2.equals(".")) {
+        	                    System.out.println("Ez da erabiltzailea sortuko");
+        	                } else {
+        	                    System.out.println();
+        	                    System.out.println("Pasahitzak ez datoz bat, ezin izan da erabiltzailea gehitu.\nHasierarako menura bueltatzen...");
+        	                }
+        	            }
+                    }
+	                
+	                // Fitxategia itxi
+	                scFitx.close();
+	            } catch (Exception e) {
+	                System.out.println();
+	                System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
+	            }
+	        } catch (Exception e) {
+	            System.out.println();
+	            System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
+	        }
+	    }
 	  
 	  private static void gehituEremua(Scanner scanner) {
 	        
@@ -226,156 +299,32 @@ public class Erronka2 {
 	            System.out.println("Errorea egon da: " + e.getMessage());
 	        }
 	    }
-	  
-	    public static void erabGehitu(Scanner scErab) throws IOException {
-	        // Aldagaiak deklaratu
-	        String erab, pas, pas1, pas2, berria = new String();
-	        
-	        try {
-	            // Erabiltzaile izena eskatu
-	            System.out.print("Sortu erabiltzaile berria: ");
-	            erab = scErab.next();
-	            
-	            // Pasahitza eskatu
-	            System.out.print("Sortu pasahitza: ");
-	            pas1 = scErab.next();
-	            
-	            // Pasahitza errepikatu
-	            System.out.print("Errepikatu pasahitza: ");
-	            pas2 = scErab.next();
-	            
-	            // Fitxategia irakurri
-	            File fErabiltzaileak = new File("files/erabiltzaileak.txt");
-	            try {
-	                Scanner scFitx = new Scanner(fErabiltzaileak);
-	                
-	                // Fitxategiko lerroak irakurri
-	                while (scFitx.hasNext()) {
-	                    String lerroOsoa = scFitx.nextLine();
-	                    String[] lerroParteak = lerroOsoa.split(";");
-	                    String erabF = lerroParteak[0];
-	                    
-	                    // Erabiltzailea existitzen den egiaztatu
-	                    if(erabF.equals(erab)) {
-	                        System.out.println();
-	                        System.out.println("Erabiltzailea existitzen da");
-	                        erab = ""; // Erabiltzailea ezabatu
-	                        pas1 = ""; // Pasahitza ezabatu
-	                        pas2 = "."; // Errepikatutako pasahitza ezabatu
-	                    }
-	                }
-	                
-	                // Fitxategia itxi
-	                scFitx.close();
-	            } catch (Exception e) {
-	                System.out.println();
-	                System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
-	            }
-	            
-	            // Pasahitzak berdinak diren egiaztatu
-	            if(pas1.equals(pas2)) {
-	                pas = pas2;
-	                berria = erab + ";" + pas;
-	                
-	                // Fitxategira erabiltzaile berria gehitu
-	                Path path = Paths.get(fErabiltzaileak.toURI());
-	                byte[] strToBytes = (System.lineSeparator() + berria).getBytes();
-	                
-	                Files.write(path, strToBytes, StandardOpenOption.APPEND);
-	                System.out.println();
-	                System.out.println("Erabiltzaile gehituta.");
-	            } else {
-	                if(pas2.equals(".")) {
-	                    System.out.println("Ez da erabiltzailea sortuko");
-	                } else {
-	                    System.out.println();
-	                    System.out.println("Pasahitzak ez datoz bat, ezin izan da erabiltzailea gehitu.\nHasierarako menura bueltatzen...");
-	                }
-	            }
-	        } catch (Exception e) {
-	            System.out.println();
-	            System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
-	        }
-	    }
 	    
 	    public static void datuakErakutsi(Scanner sc) {
 			  
 			  System.out.println("IKUSI NAHI DUZUN TAULA AUKERATU:");
 			  System.out.println("Bezeroak");
-			  System.out.println("Bezeroen telefonoa");
+			  System.out.println("Bezeroen telefonoak");
 			  System.out.println("Biltegiak");
 			  System.out.println("Bulegariak");
 			  System.out.println("Eskariak");
 			  System.out.println("Eskarien egoera");
 			  System.out.println("Eskari-lerroa");
-			  System.out.println("Herrialdea");
+			  System.out.println("Herrialdeak");
 			  System.out.println("Inbentarioa");
 			  System.out.println("Kategoria");
 			  System.out.println("Kokalekua");
+			  System.out.println("Kontinenteak");
 			  System.out.println("Langileak");
-			  System.out.println("Kontinentea");
-			  System.out.println("Lanpostua");
+			  System.out.println("Lanpostuak");
 			  System.out.println("Produktuak");
 			  System.out.println("Saltzaileak\n");
 			  System.out.print("Idatzi agertzen diren bezala: ");
 			  
 			  String taula = sc.next();
-			  int auk = 1;
 			  
-			  if (taula.equals("Bezeroak")) {
-				  auk = 1;
-				  if (taula.equals("Bezeroen telefonoa")) {
-					  auk = 2;
-					  if (taula.equals("Biltegiak")) {
-						  auk = 3;
-						  if (taula.equals("Bulegariak")) {
-							  auk = 4;
-							  if (taula.equals("Eskariak")) {
-								  auk = 5;
-								  if (taula.equals("Eskarien egoera")) {
-									  auk = 6;
-									  if (taula.equals("Eskari-lerroa")) {
-										  auk = 7;
-										  if (taula.equals("Herrialdea")) {
-											  auk = 8;
-											  if (taula.equals("Inbentarioa")) {
-												  auk = 9;
-												  if (taula.equals("Kategoria")) {
-													  auk = 10;
-													  if (taula.equals("Kokalekua")) {
-														  auk = 11;
-														  if (taula.equals("Langileak")) {
-															  auk = 12;
-															  if (taula.equals("Kontinentea")) {
-																  auk = 13;
-																  if (taula.equals("Lanpostua")) {
-																	  auk = 14;
-																	  if (taula.equals("Produktuak")) {
-																		  auk = 15;
-																		  if (taula.equals("Saltzaileak")) {
-																			  auk = 16;
-																		  }
-																	  }
-																  }
-															  }
-														  }
-													  }
-												  }
-											  }
-										  }
-									  }
-								  }
-							  }
-						  }
-					  }
-				  }
-			  }
-			  
-			  
-			  //int auk = sc.nextInt();
-			  
-			  switch(auk) {
-			  	case 1:
+			  switch(taula) {
+			  	case "Bezeroak":
 			  		BezeroKlasea bezeroa = new BezeroKlasea("", "", "", "", "");
 			  						
 			  		try {
@@ -401,7 +350,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 2:
+			  	case "Bezeroen telefonoak":
 			  		BezeroTel tel = new BezeroTel("", "", "");
 			  						
 			  		try {
@@ -425,7 +374,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 3:
+			  	case "Biltegiak":
 			  		BiltegiKlasea bilt = new BiltegiKlasea("", "", "");
 			  						
 			  		try {
@@ -449,7 +398,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 4:
+			  	case "Bulegariak":
 			  		BulegariKlasea bul = new BulegariKlasea("", "");
 			  						
 			  		try {
@@ -472,7 +421,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 5:
+			  	case "Eskariak":
 			  		EskariKlasea esk = new EskariKlasea("", "", "", "", "");
 			  						
 			  		try {
@@ -498,7 +447,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 6:
+			  	case "Eskarien egoera":
 			  		EskariEgoeraKlasea eskE = new EskariEgoeraKlasea("", "");
 			  						
 			  		try {
@@ -521,7 +470,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 7:
+			  	case "Eskari-lerroa":
 			  		EskariLerroKlasea eskl = new EskariLerroKlasea("", "", "", "", "");
 			  						
 			  		try {
@@ -547,7 +496,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 8:
+			  	case "Herrialdeak":
 			  		HerrialdeKlasea her = new HerrialdeKlasea("", "", "");
 			  						
 			  		try {
@@ -571,7 +520,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 9:
+			  	case "Inbentarioa":
 			  		InbentarioKlasea inb = new InbentarioKlasea("", "", "");
 			  						
 			  		try {
@@ -595,7 +544,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 10:
+			  	case "Kategoria":
 			  		KategoriaKlasea kateg = new KategoriaKlasea("", "");
 			  						
 			  		try {
@@ -618,7 +567,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 11:
+			  	case "Kokalekua":
 			  		KokalekuKlasea koka = new KokalekuKlasea("", "", "", "", "", "");
 			  						
 			  		try {
@@ -645,7 +594,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 12:
+			  	case "Kontinenteak":
 			  		KontinenteKlasea kont = new KontinenteKlasea("", "");
 			  						
 			  		try {
@@ -668,7 +617,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 13:
+			  	case "Langileak":
 			  		LangileKlasea lang = new LangileKlasea("", "", "", "", "", "", "");
 			  						
 			  		try {
@@ -696,7 +645,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 14:
+			  	case "Lanpostuak":
 			  		LanpostuKlasea lanpo = new LanpostuKlasea("", "");
 			  						
 			  		try {
@@ -719,7 +668,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 15:
+			  	case "Produktuak":
 			  		ProduktuKlasea prod = new ProduktuKlasea("", "", "", "", "", "");
 			  						
 			  		try {
@@ -746,7 +695,7 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
-			  	case 16:
+			  	case "Saltzaileak":
 			  		SaltzaileKlasea salt = new SaltzaileKlasea("", "", "");
 			  						
 			  		try {
@@ -770,6 +719,10 @@ public class Erronka2 {
 						System.out.println("Ez da fitxategia topatu\n");
 					}
 			  		break;
+			  		
+			  	default:
+			  		System.out.println("\nEz duzu idatzi listaren taula baten izena. \nHasierako menura joaten...\n");
+			  			
 			  }
 	    }
 }
