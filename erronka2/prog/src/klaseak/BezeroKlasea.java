@@ -1,12 +1,6 @@
-package klaseak;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+package erronka2;
 
 public class BezeroKlasea {
-	
-	//atributuak eta objetuen arraya, lerro bakoitza objektu bat
 
 	protected String id;
 	protected String izena;
@@ -23,39 +17,50 @@ public class BezeroKlasea {
 		this.emaila = email;
 	}
 	
-	/*public void addClass() {
-		BezeroKlasea bezeroa = new BezeroKlasea();
-	}*/
-	
-	public void bezeroaSortu() {
-		try {
-			File bezero = new File("fitxategiak/bezero.csv");
-			Scanner scFitx = new Scanner(bezero);
-			scFitx.nextLine();
-			while(scFitx.hasNext()) {
-				BezeroKlasea bezeroa = new BezeroKlasea();
-				String lerro = scFitx.nextLine();
-				String[] lerroArray = lerro.split(";");
-				//System.out.println("\n");
-				this.id = lerroArray[0];
-				this.izena = lerroArray[1];
-				this.abizena = lerroArray[2];
-				this.helbidea = lerroArray[3];
-				this.emaila = lerroArray[4];
-				System.out.println("\nID: "+lerroArray[0]);
-				System.out.println("\nIzena: "+lerroArray[1]);
-				System.out.println("\nAbizena: "+lerroArray[2]);
-				System.out.println("\nHelbidea: "+lerroArray[3]);
-				System.out.println("\nEmaila: "+lerroArray[4]);
-				
-				//BezeroKlasea bezeroa = new BezeroKlasea();
-				//bezeroa = lerro;
-				BDBezeroKlasea.addKlasea(bezeroa);
-			}
-			scFitx.close();
-		}catch(FileNotFoundException e) {
-			System.out.println("Ez da fitxategia topatu\n");
-		}
+	public String getId() {
+		return id;
 	}
-
+	
+	public void setId(String ida) {
+		this.id = ida;
+	}
+	
+	public String getIzena() {
+		return izena;
+	}
+	
+	public void setIzena(String izen) {
+		this.izena = izen;
+	}
+	
+	public String getAbiz() {
+		return abizena;
+	}
+	
+	public void setAbiz(String abizen) {
+		this.abizena = abizen;
+	}
+	
+	public String getHelb() {
+		return helbidea;
+	}
+	
+	public void setHelb(String helbide) {
+		this.helbidea = helbide;
+	}
+	
+	public String getEmail() {
+		return emaila;
+	}
+	
+	public void setEmail(String email) {
+		this.emaila = email;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "\nID: "+id+"\nIzena: "+izena+"\nAbizena: "+abizena+"\nHelbidea: "+helbidea+"\nEmaila: "+emaila;
+	}
+	
 }

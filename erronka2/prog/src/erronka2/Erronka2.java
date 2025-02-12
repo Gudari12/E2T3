@@ -120,6 +120,7 @@ public class Erronka2 {
 				    		
 				    	case 4:
 				    		System.out.println("Datuak erakutsi");
+				    		datuakErakutsi();
 				    		System.out.println("---------------------------------------");
 				    		break;
 				    		
@@ -267,5 +268,428 @@ public class Erronka2 {
 			  System.out.println("ERROREA GERTATU DA ETA KUDEATUKO DUGU");
 		  }
 
+	  }
+	  
+public static void datuakErakutsi() {
+		  
+		  System.out.println("Ikusi nahi duzun taula aukeratu");
+		  System.out.println("Bezeroak (1)");
+		  System.out.println("Bezeroen telefonoa (2)");
+		  System.out.println("Biltegiak (3)");
+		  System.out.println("Bulegariak (4)");
+		  System.out.println("Eskariak (5)");
+		  System.out.println("Eskarien egoera (6)");
+		  System.out.println("Eskari-lerroa (7)");
+		  System.out.println("Herrialdea (8)");
+		  System.out.println("Inbentarioa (9)");
+		  System.out.println("Kategoria (10)");
+		  System.out.println("Kokalekua (11)");
+		  System.out.println("Langileak (12)");
+		  System.out.println("Kontinentea (13)");
+		  System.out.println("Lanpostua (15)");
+		  System.out.println("Produktuak (15)");
+		  System.out.println("Saltzaileak (16)");
+		  
+		  Scanner sc = new Scanner(System.in);
+		  int auk = sc.nextInt();
+		  
+		  switch(auk) {
+		  	case 1:
+		  		BezeroKlasea bezeroa = new BezeroKlasea("", "", "", "", "");
+		  						
+		  		try {
+					File bezero = new File("files/csv/bezero.csv");
+					Scanner scFitx = new Scanner(bezero);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						bezeroa.setId(lerroArray[0]);
+						bezeroa.setIzena(lerroArray[1]);
+						bezeroa.setAbiz(lerroArray[2]);
+						bezeroa.setHelb(lerroArray[3]);
+						bezeroa.setEmail(lerroArray[4]);
+						
+						BDBezeroKlasea bdb = new BDBezeroKlasea();
+						bdb.addKlasea(bezeroa);
+						System.out.println(bdb.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 2:
+		  		BezeroTel tel = new BezeroTel("", "", "");
+		  						
+		  		try {
+					File telf = new File("files/csv/bezerotel.csv");
+					Scanner scFitx = new Scanner(telf);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						tel.setIdT(lerroArray[0]);
+						tel.setIDBez(lerroArray[1]);
+						tel.setZenbakia(lerroArray[2]);
+						
+						BDBezeroTel bdbt = new BDBezeroTel();
+						bdbt.addKlasea(tel);
+						System.out.println(bdbt.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 3:
+		  		BiltegiKlasea bilt = new BiltegiKlasea("", "", "");
+		  						
+		  		try {
+					File bil = new File("files/csv/biltegi.csv");
+					Scanner scFitx = new Scanner(bil);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						bilt.setIdB(lerroArray[0]);
+						bilt.setIzenaB(lerroArray[1]);
+						bilt.setKokalekuarenID(lerroArray[2]);
+						
+						BDBiltegiKlasea bdbi = new BDBiltegiKlasea();
+						bdbi.addKlasea(bilt);
+						System.out.println(bdbi.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 4:
+		  		BulegariKlasea bul = new BulegariKlasea("", "");
+		  						
+		  		try {
+					File buleg = new File("files/csv/bulegari.csv");
+					Scanner scFitx = new Scanner(buleg);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						bul.setIdBu(lerroArray[0]);
+						bul.setIdLanpostu(lerroArray[1]);
+						
+						BDBulegariKlasea bdbu = new BDBulegariKlasea();
+						bdbu.addKlasea(bul);
+						System.out.println(bdbu.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 5:
+		  		EskariKlasea esk = new EskariKlasea("", "", "", "", "");
+		  						
+		  		try {
+					File eska = new File("files/csv/eskari.csv");
+					Scanner scFitx = new Scanner(eska);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						esk.setIdEs(lerroArray[0]);
+						esk.setIdBezEs(lerroArray[1]);
+						esk.setIdEg(lerroArray[2]);
+						esk.setIdSaEs(lerroArray[3]);
+						esk.setEskData(lerroArray[4]);
+						
+						BDEskariKlasea bde = new BDEskariKlasea();
+						bde.addKlasea(esk);
+						System.out.println(bde.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 6:
+		  		EskariEgoeraKlasea eskE = new EskariEgoeraKlasea("", "");
+		  						
+		  		try {
+					File ee = new File("files/csv/eskariegoera.csv");
+					Scanner scFitx = new Scanner(ee);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						eskE.setIdEE(lerroArray[0]);
+						eskE.setDeskEE(lerroArray[1]);
+						
+						BDEskariEgoeraKlasea bdee = new BDEskariEgoeraKlasea();
+						bdee.addKlasea(eskE);
+						System.out.println(bdee.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 7:
+		  		EskariLerroKlasea eskl = new EskariLerroKlasea("", "", "", "", "");
+		  						
+		  		try {
+					File el = new File("files/csv/eskarilerro.csv");
+					Scanner scFitx = new Scanner(el);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						eskl.setIdEL(lerroArray[0]);
+						eskl.setIdL(lerroArray[1]);
+						eskl.setIdProdEL(lerroArray[2]);
+						eskl.setKopEL(lerroArray[3]);
+						eskl.setSalnEL(lerroArray[4]);
+						
+						BDEskariLerroKlasea bdel = new BDEskariLerroKlasea();
+						bdel.addKlasea(eskl);
+						System.out.println(bdel.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 8:
+		  		HerrialdeKlasea her = new HerrialdeKlasea("", "", "");
+		  						
+		  		try {
+					File herri = new File("files/csv/herrialde.csv");
+					Scanner scFitx = new Scanner(herri);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						her.setId(lerroArray[0]);
+						her.setIzena(lerroArray[1]);
+						her.setIdKontinente(lerroArray[2]);
+						
+						BDHerrialdeKlasea bdh = new BDHerrialdeKlasea();
+						bdh.addKlasea(her);
+						System.out.println(bdh.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 9:
+		  		InbentarioKlasea inb = new InbentarioKlasea("", "", "");
+		  						
+		  		try {
+					File inben = new File("files/csv/inbentario.csv");
+					Scanner scFitx = new Scanner(inben);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						inb.setIdProd(lerroArray[0]);
+						inb.setIdBil(lerroArray[1]);
+						inb.setKopurua(lerroArray[2]);
+						
+						BDInbentarioKlasea bdin = new BDInbentarioKlasea();
+						bdin.addKlasea(inb);
+						System.out.println(bdin.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 10:
+		  		KategoriaKlasea kateg = new KategoriaKlasea("", "");
+		  						
+		  		try {
+					File kat = new File("files/csv/kategoria.csv");
+					Scanner scFitx = new Scanner(kat);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						kateg.setId(lerroArray[0]);
+						kateg.setIzena(lerroArray[1]);
+						
+						BDKategoriaKlasea bdkat = new BDKategoriaKlasea();
+						bdkat.addKlasea(kateg);
+						System.out.println(bdkat.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 11:
+		  		KokalekuKlasea koka = new KokalekuKlasea("", "", "", "", "", "");
+		  						
+		  		try {
+					File kok = new File("files/csv/kokaleku.csv");
+					Scanner scFitx = new Scanner(kok);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						koka.setId(lerroArray[0]);
+						koka.setHelbidea(lerroArray[1]);
+						koka.setPostakodea(lerroArray[2]);
+						koka.setUdalerria(lerroArray[3]);
+						koka.setProbintzia(lerroArray[4]);
+						koka.setIdHerrialde(lerroArray[5]);
+						
+						BDKokalekuKlasea bdko = new BDKokalekuKlasea();
+						bdko.addKlasea(koka);
+						System.out.println(bdko.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 12:
+		  		KontinenteKlasea kont = new KontinenteKlasea("", "");
+		  						
+		  		try {
+					File kon = new File("files/csv/kontinente.csv");
+					Scanner scFitx = new Scanner(kon);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						kont.setId(lerroArray[0]);
+						kont.setIzena(lerroArray[1]);
+						
+						BDKontinenteKlasea bdkon = new BDKontinenteKlasea();
+						bdkon.addKlasea(kont);
+						System.out.println(bdkon.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 13:
+		  		LangileKlasea lang = new LangileKlasea("", "", "", "", "", "", "");
+		  						
+		  		try {
+					File lan = new File("files/csv/langile.csv");
+					Scanner scFitx = new Scanner(lan);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						lang.setId(lerroArray[0]);
+						lang.setIzena(lerroArray[1]);
+						lang.setAbiz(lerroArray[2]);
+						lang.setEmaila(lerroArray[3]);
+						lang.setTelefonoa(lerroArray[4]);
+						lang.setKontrataziodata(lerroArray[5]);
+						lang.getIdNagusi(lerroArray[6]);
+						
+						BDLangileKlasea bdlan = new BDLangileKlasea();
+						bdlan.addKlasea(lang);
+						System.out.println(bdlan.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 14:
+		  		LanpostuKlasea lanpo = new LanpostuKlasea("", "");
+		  						
+		  		try {
+					File lanp = new File("files/csv/lanpostu.csv");
+					Scanner scFitx = new Scanner(lanp);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						lanpo.setId(lerroArray[0]);
+						lanpo.setDeskribapena(lerroArray[1]);
+						
+						BDLanpostuKlasea bdlanp = new BDLanpostuKlasea();
+						bdlanp.addKlasea(lanpo);
+						System.out.println(bdlanp.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 15:
+		  		ProduktuKlasea prod = new ProduktuKlasea("", "", "", "", "", "");
+		  						
+		  		try {
+					File pro = new File("files/csv/produktu.csv");
+					Scanner scFitx = new Scanner(pro);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						prod.setId(lerroArray[0]);
+						prod.setIzena(lerroArray[1]);
+						prod.setDeskribapena(lerroArray[2]);
+						prod.setBalioa(lerroArray[3]);
+						prod.setSalneurria(lerroArray[4]);
+						prod.setIdKategoria(lerroArray[5]);
+						
+						BDProduktuKlasea bdpr = new BDProduktuKlasea();
+						bdpr.addKlasea(prod);
+						System.out.println(bdpr.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  	case 16:
+		  		SaltzaileKlasea salt = new SaltzaileKlasea("", "", "");
+		  						
+		  		try {
+					File saltz = new File("files/csv/saltzaile.csv");
+					Scanner scFitx = new Scanner(saltz);
+					scFitx.nextLine();
+					while(scFitx.hasNext()) {
+						String lerro = scFitx.nextLine();
+						String[] lerroArray = lerro.split(";");
+						
+						salt.setId(lerroArray[0]);
+						salt.setErabiltzailea(lerroArray[1]);
+						salt.setPasahitza(lerroArray[2]);
+						
+						BDSaltzaileKlasea bdsal = new BDSaltzaileKlasea();
+						bdsal.addKlasea(salt);
+						System.out.println(bdsal.toString());
+					}
+					scFitx.close();
+				}catch(FileNotFoundException e) {
+					System.out.println("Ez da fitxategia topatu\n");
+				}
+		  		break;
+		  }
+		  
 	  }
 }
