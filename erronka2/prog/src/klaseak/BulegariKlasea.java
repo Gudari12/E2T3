@@ -7,23 +7,40 @@ public class BulegariKlasea {
 	
 	
 	public BulegariKlasea() {}
+	/**
+	 * Atributuak
+	 * @param ida
+	 * @param idl
+	 */
 	public BulegariKlasea(String ida, String idl) {
 		this.id = ida;
 		this.idLanpostu = idl;
 	}
-	
+	/**
+	 * id bueltatu
+	 * @return id
+	 */
 	public String getIdBu() {
 		return id;
 	}
-	
+	/**
+	 * ida aldatu
+	 * @param ida
+	 */
 	public void setIdBu(String ida) {
 		this.id = ida;
 	}
-	
+	/**
+	 * idLanpostu bueltatu
+	 * @return isLanpostu
+	 */
 	public String getIdLanpostu() {
 		return idLanpostu;
 	}
-	
+	/**
+	 * idl aldatu
+	 * @param idl
+	 */
 	public void setIdLanpostu(String idl) {
 		this.idLanpostu = idl;
 	}
