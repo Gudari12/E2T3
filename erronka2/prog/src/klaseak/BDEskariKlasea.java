@@ -10,6 +10,10 @@ public class BDEskariKlasea {
 		this.eskari = new ArrayList<>();
 	}
 	
+	/**
+	 * ArrayListean objektuak sartzen ditu.
+	 * @param esk
+	 */
 	public void addKlasea(EskariKlasea esk) {
 		eskari.add(esk);
 	}

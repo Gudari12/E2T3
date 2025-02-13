@@ -10,6 +10,10 @@ public class BDLangileKlasea {
 		this.langile = new ArrayList<>();
 	}
 	
+	/**
+	 * ArrayListean objektuak sartzen ditu.
+	 * @param lan
+	 */
 	public void addKlasea(LangileKlasea lan) {
 		langile.add(lan);
 	}

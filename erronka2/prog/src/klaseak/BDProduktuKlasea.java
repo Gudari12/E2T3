@@ -10,6 +10,10 @@ public class BDProduktuKlasea {
 		this.produktua = new ArrayList<>();
 	}
 	
+	/**
+	 * ArrayListean objektuak sartzen ditu.
+	 * @param pro
+	 */
 	public void addKlasea(ProduktuKlasea pro) {
 		produktua.add(pro);
 	}

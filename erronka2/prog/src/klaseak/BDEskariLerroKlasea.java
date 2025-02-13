@@ -10,6 +10,10 @@ public class BDEskariLerroKlasea {
 		this.eskaLerro = new ArrayList<>();
 	}
 	
+	/**
+	 * ArrayListean objektuak sartzen ditu.
+	 * @param esl
+	 */
 	public void addKlasea(EskariLerroKlasea esl) {
 		eskaLerro.add(esl);
 	}
