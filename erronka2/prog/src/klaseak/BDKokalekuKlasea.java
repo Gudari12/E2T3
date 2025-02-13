@@ -10,6 +10,10 @@ public class BDKokalekuKlasea {
 		this.kokaleku = new ArrayList<>();
 	}
 	
+	/**
+	 * ArrayListean objektuak sartzen ditu.
+	 * @param kok
+	 */
 	public void addKlasea(KokalekuKlasea kok) {
 		kokaleku.add(kok);
 	}

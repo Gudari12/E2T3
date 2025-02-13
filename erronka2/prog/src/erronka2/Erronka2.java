@@ -42,13 +42,19 @@ import klaseak.ProduktuKlasea;
 import klaseak.SaltzaileKlasea;
 
 public class Erronka2 {
+	
+	/**
+	 * Erabiltzailea eta pasahitza eskatzen ditu. Programaren menua erakusten du.
+	 * @param args
+	 * @throws IOException
+	 */
 	  public static void main(String[] args) throws IOException {
 
 		  int itxi=0;
 		  Scanner scanner = new Scanner(System.in);
 		  do {
 			  
-			  /*String usuario, contraseña;
+			  String usuario, contraseña;
 			  int errorea=0;
 			  int ondo=0;
 			  
@@ -95,7 +101,7 @@ public class Erronka2 {
 				    if (errorea==4) {
 				    	System.exit(0);
 				    }
-			  }while(errorea != 6);*/
+			  }while(errorea != 6);
 			  System.out.println("Ongi etorri!");
 			  System.out.println("");
 			  String errepikapena;
@@ -175,6 +181,12 @@ public class Erronka2 {
 		  scanner.close();
 	  }
 	  
+	  /**
+	   *  Programarako erabiltzaile berri bat sortzen du, izena zein pasahitza.
+	   * @param scErab Erabiltzaileak idatzitakoa.
+	   * @throws IOException
+	   */
+	  
 	  public static void erabGehitu(Scanner scErab) throws IOException {
 	        // Aldagaiak deklaratu
 	        String erab, pas, pas1, pas2 = "", berria = new String();
@@ -248,6 +260,12 @@ public class Erronka2 {
 	        }
 	    }
 	  
+	  /**
+	   * Datu-basea eguneratzeko azpimenua.
+	   * @param scanner Erabiltzaileak idatzitakoa.
+	   * @see gehituSoldata().
+	   */
+	  
 	  private static void gehituEremua(Scanner scanner) {
 	        
 	        // Mostrar el menú
@@ -269,6 +287,10 @@ public class Erronka2 {
 	                System.out.println("Opción no válida.");
 	        }
 	    }
+	  
+		  /**
+		   * Datu-basean soldata gehitzeko script-a sortzen du.
+		   */
 
 	    // Método para generar el script SQL para agregar un campo "soldata"
 	    private static void gehituSoldata() {
@@ -283,6 +305,10 @@ public class Erronka2 {
 	            System.out.println("Errorea egon da: " + e.getMessage());
 	        }
 	    }
+	    
+	    /**
+	     * Datu-basean soldataren balioa eguneratzeko script-a sortzen du.
+	     */
 
 	    // Método para generar el script SQL para actualizar las sueldos según el puesto
 	    private static void eguneratuSoldata() {
@@ -299,6 +325,11 @@ public class Erronka2 {
 	            System.out.println("Errorea egon da: " + e.getMessage());
 	        }
 	    }
+	    
+	    /**
+	     * Datu-baseko informazioa aukeratutako taularen arabera eta antolatuta erakusten du.
+	     * @param sc Erabiltzaileak idatzitako aukera.
+	     */
 	    
 	    public static void datuakErakutsi(Scanner sc) {
 			  
@@ -721,7 +752,7 @@ public class Erronka2 {
 			  		break;
 			  		
 			  	default:
-			  		System.out.println("\nEz duzu idatzi listaren taula baten izena. \nHasierako menura joaten...\n");
+			  		System.out.println("\nEz duzu zerrendako taula baten izena idatzi. \nHasierako menura joaten...\n");
 			  			
 			  }
 	    }
