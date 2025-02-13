@@ -261,9 +261,8 @@ public class Erronka2 {
 	    }
 	  
 	  /**
-	   * Datu-basea eguneratzeko azpimenua.
+	   * Datu-basea eguneratzeko azpimenua
 	   * @param scanner Erabiltzaileak idatzitakoa.
-	   * @see gehituSoldata().
 	   */
 	  
 	  private static void gehituEremua(Scanner scanner) {
@@ -295,8 +294,8 @@ public class Erronka2 {
 	    // Método para generar el script SQL para agregar un campo "soldata"
 	    private static void gehituSoldata() {
 	        String filePath = "files/sql/gehitu_eremua_soldata.sql";
-	        String sqlScript = "ALTER TABLE Langileen\n" +
-	                           "ADD soldata NUMBER;\n";
+	        String sqlScript = "ALTER TABLE LANGILE\n" +
+	                           "ADD soldata NUMBER(5);\n";
 
 	        try (FileWriter writer = new FileWriter(filePath)) {
 	            writer.write(sqlScript);
@@ -313,10 +312,8 @@ public class Erronka2 {
 	    // Método para generar el script SQL para actualizar las sueldos según el puesto
 	    private static void eguneratuSoldata() {
 	        String filePath = "files/sql/eguneratu_soldata.sql";
-	        String sqlScript = "UPDATE Langileen SET soldata = 30000 WHERE puesto = 'Saltzaile';\n" +
-	                           "UPDATE Langileen SET soldata = 30000 WHERE id_puesto = 1;\n" +
-	                           "UPDATE Langileen SET soldata = 31000 WHERE id_puesto = 2;\n" +
-	                           "UPDATE Langileen SET soldata = 32000 WHERE id_puesto = 3;\n";
+	        String sqlScript = "UPDATE LANGILE SET soldata = 30000 WHERE ID IN (SELECT L.ID FROM LANGILE L, SALTZAILE S WHERE L.ID = S.ID);\n" +
+	                           "UPDATE LANGILE SET soldata = 31000 WHERE ID IN (SELECT L.ID FROM LANGILE L, BULEGARI B WHERE L.ID=B.ID AND B.ID_LANPOSTU = 2)\n";
 
 	        try (FileWriter writer = new FileWriter(filePath)) {
 	            writer.write(sqlScript);
