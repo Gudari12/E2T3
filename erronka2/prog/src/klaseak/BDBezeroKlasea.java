@@ -10,10 +10,6 @@ public class BDBezeroKlasea {
 		this.bezeroak = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param bezeroa
-	 */
 	public void addKlasea(BezeroKlasea bezeroa) {
 		bezeroak.add(bezeroa);
 	}

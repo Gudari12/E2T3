@@ -10,10 +10,6 @@ public class BDKontinenteKlasea {
 		this.kontinente = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param kon
-	 */
 	public void addKlasea(KontinenteKlasea kon) {
 		kontinente.add(kon);
 	}

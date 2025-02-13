@@ -10,10 +10,6 @@ public class BDLanpostuKlasea {
 		this.lanpostu = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param lanp
-	 */
 	public void addKlasea(LanpostuKlasea lanp) {
 		lanpostu.add(lanp);
 	}

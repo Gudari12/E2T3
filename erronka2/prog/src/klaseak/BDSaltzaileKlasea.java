@@ -10,10 +10,6 @@ public class BDSaltzaileKlasea {
 		this.saltzaile = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param sal
-	 */
 	public void addKlasea(SaltzaileKlasea sal) {
 		saltzaile.add(sal);
 	}

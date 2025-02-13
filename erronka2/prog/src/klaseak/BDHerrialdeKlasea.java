@@ -10,10 +10,6 @@ public class BDHerrialdeKlasea {
 		this.herrialdea = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param herrialde
-	 */
 	public void addKlasea(HerrialdeKlasea herrialde) {
 		herrialdea.add(herrialde);
 	}

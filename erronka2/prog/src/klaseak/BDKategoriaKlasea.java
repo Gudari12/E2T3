@@ -10,10 +10,6 @@ public class BDKategoriaKlasea {
 		this.kategoria = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param kat
-	 */
 	public void addKlasea(KategoriaKlasea kat) {
 		kategoria.add(kat);
 	}

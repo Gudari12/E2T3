@@ -10,10 +10,6 @@ public class BDBezeroTel {
 			this.telefonoa = new ArrayList<>();
 		}
 		
-		/**
-		 * ArrayListean objektuak sartzen ditu.
-		 * @param tel
-		 */
 		public void addKlasea(BezeroTel tel) {
 			telefonoa.add(tel);
 		}

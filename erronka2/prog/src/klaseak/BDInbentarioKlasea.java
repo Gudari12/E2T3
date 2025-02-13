@@ -10,10 +10,6 @@ public class BDInbentarioKlasea {
 		this.inbentario = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param inb
-	 */
 	public void addKlasea(InbentarioKlasea inb) {
 		inbentario.add(inb);
 	}

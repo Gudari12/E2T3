@@ -10,10 +10,6 @@ public class BDBulegariKlasea {
 		this.bulegari = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param buleg
-	 */
 	public void addKlasea(BulegariKlasea buleg) {
 		bulegari.add(buleg);
 	}

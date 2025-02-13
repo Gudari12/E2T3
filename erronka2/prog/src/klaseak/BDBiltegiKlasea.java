@@ -10,10 +10,6 @@ public class BDBiltegiKlasea {
 		this.biltegi = new ArrayList<>();
 	}
 	
-	/**
-	 * ArrayListean objektuak sartzen ditu.
-	 * @param bil
-	 */
 	public void addKlasea(BiltegiKlasea bil) {
 		biltegi.add(bil);
 	}
