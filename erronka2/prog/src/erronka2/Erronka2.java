@@ -312,8 +312,17 @@ public class Erronka2 {
 	    // Método para generar el script SQL para actualizar las sueldos según el puesto
 	    private static void eguneratuSoldata() {
 	        String filePath = "files/sql/eguneratu_soldata.sql";
-	        String sqlScript = "UPDATE LANGILE SET soldata = 30000 WHERE ID IN (SELECT L.ID FROM LANGILE L, SALTZAILE S WHERE L.ID = S.ID);\n" +
-	                           "UPDATE LANGILE SET soldata = 31000 WHERE ID IN (SELECT L.ID FROM LANGILE L, BULEGARI B WHERE L.ID=B.ID AND B.ID_LANPOSTU = 2)\n";
+	        String [] bulegari = new String [20] ;
+	        bulegari[0]= "UPDATE LANGILE SET soldata = 30000 WHERE ID IN (SELECT L.ID FROM LANGILE L, SALTZAILE S WHERE L.ID = S.ID);\n";
+	        
+	        int k = 30;
+    		for (int i = 1; i<20;i++) {
+        		bulegari[i]="UPDATE LANGILE SET soldata = "+k+"000 WHERE ID IN (SELECT L.ID FROM LANGILE L, BULEGARI B WHERE L.ID=B.ID AND B.ID_LANPOSTU = "+i+")\n";
+        		k++;
+    		}
+    		
+    		String sqlScript =bulegari[0]+bulegari[1]+bulegari[2]+bulegari[3]+bulegari[4]+bulegari[5]+bulegari[6]+bulegari[7]+bulegari[8]+bulegari[9]+bulegari[10]+bulegari[11]+bulegari[12]+bulegari[13]+bulegari[14]+bulegari[15]+bulegari[16]+bulegari[17]+bulegari[18]+bulegari[19];
+	        		
 
 	        try (FileWriter writer = new FileWriter(filePath)) {
 	            writer.write(sqlScript);
